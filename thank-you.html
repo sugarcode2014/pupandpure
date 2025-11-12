@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pup & Pure — Thank You</title>
+  <style>
+    :root{
+      --bg: #fbf9f4;        /* soft off-white */
+      --ink: #2e2a27;       /* dark brown */
+      --muted:#6a5f55;      /* medium brown */
+      --leaf:#6fa36a;       /* soft green */
+      --leaf-600:#5b9257;   /* slightly darker */
+      --leaf-dark:#4f8651;  /* darker green */
+      --tan:#e9dccf;        /* light tan */
+      --card:#ffffff;       /* white */
+      --ring:#e7e0d7;       /* subtle border */
+      --shadow: 0 12px 30px rgba(46, 42, 39, 0.08), 0 2px 10px rgba(46,42,39,0.05);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #fff6e7 0%, transparent 60%),
+        radial-gradient(900px 600px at 100% -20%, #eef6ee 0%, transparent 55%),
+        var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:var(--leaf-dark);text-decoration:none}
+    .container{width:min(880px,92%);margin:0 auto}
+
+    /* Header (logo + order button only) */
+    .header{
+      position:sticky;top:0;z-index:60;
+      background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.9));
+      backdrop-filter:saturate(1.2) blur(6px);
+      border-bottom:1px solid var(--ring)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
+    .brand-logo{width:75px;height:68px;border-radius:50%;object-fit:cover;display:block}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      background:var(--leaf);color:#fff;border:1px solid transparent;
+      padding:12px 18px;border-radius:999px;font-weight:800;cursor:pointer;
+      box-shadow:0 10px 24px rgba(95,135,97,.25);
+      transition:transform .06s ease, box-shadow .2s ease, background .2s ease
+    }
+    .btn:hover{background:var(--leaf-600)}
+    .btn:active{transform:translateY(1px)}
+    .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--ring);box-shadow:none}
+    .btn.ghost:hover{box-shadow:0 4px 14px rgba(46,42,39,0.06)}
+
+    /* Hero */
+    .page-hero{padding:34px 0 24px;border-bottom:1px solid var(--ring);background:linear-gradient(180deg,#ffffff,rgba(255,255,255,.86))}
+    .page-hero h1{margin:0 0 8px;font-size:clamp(1.7rem,3.4vw,2.3rem);letter-spacing:.2px}
+    .page-hero p{margin:0;color:var(--muted)}
+
+    /* Thank you card */
+    .section{padding:48px 0}
+    .card{
+      background:linear-gradient(180deg,#ffffff, #fffefc);
+      border:1px solid var(--ring);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card-body{padding:28px;display:grid;gap:16px;justify-items:center;text-align:center}
+    .check{
+      width:70px;height:70px;border-radius:50%;
+      background:linear-gradient(180deg, #7bc07a, #5b9257);
+      display:grid;place-items:center;color:#fff;
+      box-shadow:0 10px 24px rgba(95,135,97,.25);
+    }
+    .check svg{width:36px;height:36px}
+    .lead{color:var(--muted);max-width:620px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+
+    /* Footer */
+    footer{border-top:1px solid var(--ring);background:#fff;padding:22px 0;color:var(--muted)}
+    .foot-grid{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <img src="images/logo.png" alt="Pup & Pure Logo" class="brand-logo" />
+        Pup & Pure Bakery
+      </div>
+      <div>
+        <a class="btn" href="order.html">Order Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Thank you!</h1>
+      <p>We’ve received your order. We’ll email you a confirmation shortly.</p>
+    </div>
+  </section>
+
+  <!-- Card -->
+  <section class="section">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <div class="check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 style="margin:0">Order submitted successfully</h2>
+          <p class="lead">
+            Thanks for choosing Pup & Pure. If you need to make a change, just reply to the confirmation email.
+            We typically respond within one business day.
+          </p>
+          <div class="actions">
+            <a class="btn" href="index.html#menu">Browse Menu</a>
+            <a class="btn ghost" href="index.html">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot-grid">
+      <div>© <span id="year"></span> Pup & Pure — All‑natural dog bakery</div>
+      <div><a href="index.html#about">About</a> • <a href="index.html#menu">Menu</a> • <a href="order.html">Order</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Optional: if arriving here without a referrer (direct load), guide users back
+    if (!document.referrer) {
+      // You can show a subtle note or leave it out.
+      // console.log('Direct visit to thank-you page');
+    }
+  </script>
+</body>
+</html>
