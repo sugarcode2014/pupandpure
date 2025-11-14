@@ -43,9 +43,10 @@
     .slide::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(47,44,38,.65) 0%, rgba(47,44,38,.35) 40%, rgba(47,44,38,.1) 70%, rgba(47,44,38,0) 100%)}
     .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center}
     .slide-content{position:relative;z-index:2;width:min(1120px,92%);margin:0 auto;color:#fff}
-    .eyebrow{display:inline-block;font-size:.9rem;color:#f6efe6;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:6px 10px;border-radius:999px;margin-bottom:10px}
+    .eyebrow{display:inline-block;font-size:.9rem;color:#13035f;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:6px 10px;border-radius:999px;margin-bottom:10px}
     .title{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.12;margin:0 0 12px;text-shadow:0 2px 14px rgba(0,0,0,.35)}
     .lead{font-size:1.1rem;color:#f2ebe2;margin:0 0 18px;max-width:740px;text-shadow:0 1px 10px rgba(0,0,0,.25)}
+    .lead_dark{font-size:1.1rem;color:#f3036b;margin:0 0 18px;max-width:740px;text-shadow:0 1px 10px rgba(12, 12, 12, 0.25)}
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
 
     /* Controls */
@@ -93,7 +94,7 @@
       </div>
       <nav>
         <a class="btn ghost" href="#menu">Menu</a>
-        <a class="btn" href="order.html">Order Now</a>
+        <a class="btn" href="order.html">Order</a>
       </nav>
     </div>
   </header>
@@ -108,7 +109,7 @@
           <div class="slide-content">
             <span class="eyebrow">100% Natural • Human‑Grade</span>
             <h1 class="title">Pure ingredients for pure joy</h1>
-            <p class="lead">We bake with simple, recognizable ingredients like pumpkin, oat flour, peanut butter, and blueberries. No fillers, colors, or preservatives—ever.</p>
+            <p class="lead">We bake with simple, recognizable ingredients like pumpkin, peanut butter, and blueberries. No fillers, colors, or preservatives—ever.</p>
             <div class="cta-row">
               <a class="btn" href="/order.html">Order Now</a>
               <a class="btn ghost" href="#about">What we use</a>
@@ -133,14 +134,9 @@
           <div class="slide-bg" style="background-image:url('images/party.png');"></div>
           <div class="slide-content">
             <span class="eyebrow">Fan Favorites</span>
-            <h1 class="title">Pupcakes and Woofies</h1>
-            <p class="lead">Explore our most‑loved menu items—perfect for celebrations, training, and everyday treats.</p>
-            <ul style="margin:0 0 18px 0; padding-left:18px; color:#fff">
-              <li>Pupcakes</li>
-              <li>Pumpkin Woofies</li>
-              <li>Wild Blueberry Woofies</li>
-              <li>Carrot & Apple Woofies</li>
-            </ul>
+            <h1 class="title">Great for Celebrations</h1>
+            <p class="lead" >Explore our most‑loved menu items—perfect for celebrations, training, and everyday treats.</p>
+
             <div class="cta-row">
               <a class="btn" href="/order.html">Order Now</a>
               <a class="btn ghost" href="#menu">View Full Menu</a>
@@ -177,10 +173,11 @@
       <h2>Fresh From Our Oven</h2>
       <p class="lead center">Choose from our selection of handcrafted baked goods</p>
        <div class="grid">
-        <article class="card product"><img src="images/baked.jpg" alt="Pumpkin Woofies" /><div class="meta"><strong>Pumpkin Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00</span></div><div>ingredients: whole wheat flour, no sugar added pumpkin, unsweetened apple sauce, all-natural peanut butter, baking powder</div></article>
-        <article class="card product"><img src="images/woof.jpg" alt="Wild-Blueberry Woofies" /><div class="meta"><strong>Wild-Blueberry Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00</span></div><div>Ingredients: whole wheat flour, wild canadian blueberries, banana, extra-virgin olive oil, baking powder</div></article>
-        <article class="card product"><img src="images/pupcake.jpg" alt="Pupcakes" /><div class="meta"><strong>Pupcakes</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00</span></div><div>Ingredients: Whole Wheat flour, Bananas, Water,  Natural Peanut Butter, unsweetened apple sauce, Honey, Extra Virgin Olive Oil, Baking Powder. Frosting: Greek Yogurt,  Natural Peanut Butter</div></article>
-        <article class="card product"><img src="images/baked.jpg" alt="Carrot Apple Woofies" /><div class="meta"><strong>Carrot Apple Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00</span></div><div>Ingredients: whole wheat flour, carrots, unsweetened apple sauce,, extra-virgin olive oil, baking powder</div></article>
+        <article class="card product"><img src="images/baked.jpg" alt="Pumpkin Woofies" /><div class="meta"><strong>Pumpkin Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span></div><div>ingredients: whole wheat flour, no sugar added pumpkin, unsweetened apple sauce, all-natural peanut butter, baking powder [6 pack]</div></article>
+        <article class="card product"><img src="images/woof.jpg" alt="Wild-Blueberry Woofies" /><div class="meta"><strong>Wild-Blueberry Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span></div><div>Ingredients: whole wheat flour, wild canadian blueberries, banana, extra-virgin olive oil, baking powder [ 6 pack]</div></article>
+        <article class="card product"><img src="images/pupcake.jpg" alt="Pupcakes" /><div class="meta"><strong>Pupcakes</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 box</span></div><div>Ingredients: Whole Wheat flour, Bananas, Water,  Natural Peanut Butter, unsweetened apple sauce, Honey, Extra Virgin Olive Oil, Baking Powder. Frosting: Greek Yogurt,  Natural Peanut Butter [4 pack]</div></article>
+        <article class="card product"><img src="images/baked.jpg" alt="Carrot Apple Woofies" /><div class="meta"><strong>Carrot Apple Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span></div><div>Ingredients: whole wheat flour, carrots, unsweetened apple sauce,, extra-virgin olive oil, baking powder [6 pack]</div></article>
+        <article class="card product"><img src="images/donuts.jpg" alt="Donuts" /><div class="meta"><strong>Doggy Donuts</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 box</span></div><div>Ingredients: whole wheat flour, carrots, unsweetened apple sauce, extra-virgin olive oil, baking powder [2 pack]</div></article>
         
       </div>
     </div>
