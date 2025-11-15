@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Pup & Pure</title>
+  <style>
+    :root{
+      --bg: #fbf9f4;
+      --ink: #2e2a27;
+      --muted:#6a5f55;
+      --leaf:#6fa36a;
+      --leaf-dark:#4f8651;
+      --tan:#e9dccf;
+      --card:#ffffff;
+      --ring:#e7e0d7;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:var(--leaf-dark);text-decoration:none}
+    .container{width:min(1120px,92%);margin:0 auto}
+
+    /* Header (same as index) */
+    .header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.9));backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--ring)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
+    .brand-logo{width:75px;height:68px;border-radius:50%;object-fit:cover;display:block}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--leaf);color:#fff;border:1px solid transparent;padding:10px 16px;border-radius:999px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(95,135,97,.25)}
+    .btn:hover{background:var(--leaf-dark)}
+    .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--ring);box-shadow:none}
+
+    /* Page */
+    .hero{padding:48px 0 18px;border-bottom:1px solid var(--ring);background:
+      radial-gradient(600px 260px at 15% -10%, rgba(111,163,106,.12), transparent 60%),
+      radial-gradient(700px 300px at 100% 0%, rgba(233,220,207,.35), transparent 60%)}
+    .eyebrow{display:inline-block;font-size:.9rem;color:#2e2a27;background:#fff;border:1px solid var(--ring);padding:6px 10px;border-radius:999px;margin-bottom:10px}
+    .title{font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.12;margin:0 0 10px}
+    .lead{font-size:1.1rem;color:var(--muted);margin:0 0 14px;max-width:740px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted)}
+
+    /* Cards/Sections */
+    .section{padding:48px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:16px;padding:18px;box-shadow:0 10px 24px rgba(32,24,18,.05)}
+    .card h3{margin:6px 0 8px}
+    .card p{margin:0;color:var(--muted)}
+
+    /* Two-column panel (Contact + Promise) */
+    .split{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
+    .panel{background:#fff;border:1px solid var(--ring);border-radius:16px;padding:20px;box-shadow:0 10px 24px rgba(32,24,18,.05)}
+    .panel h2{margin:0 0 8px}
+    .list{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+
+    /* Callouts in hero */
+    .hero-card{background:linear-gradient(180deg,#ffffff,#fbf9f4);border:1px solid var(--ring);border-radius:16px;padding:16px;box-shadow:0 10px 24px rgba(32,24,18,.06);display:grid;gap:10px}
+    .pill{display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#2e2a27;background:#f3eee8;border:1px solid var(--ring);padding:6px 10px;border-radius:999px}
+    .note{font-size:.95rem;color:var(--muted)}
+
+    /* Footer (same as index) */
+    footer{border-top:1px solid var(--ring);background:#fff;padding:22px 0;color:var(--muted)}
+    .foot-grid{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+
+    @media (max-width: 980px){
+      .hero-grid,.split{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .lead{max-width:100%}
+    }
+    @media (max-width: 640px){
+      .cards{grid-template-columns:1fr}
+    }
+
+    /* Hero with background image + same overlay as carousel */
+/* Ensure the hero creates a stacking context */
+.hero {
+  position: relative;
+  padding: 48px 0 18px;
+  border-bottom: 1px solid var(--ring);
+  min-height: clamp(360px, 55vw, 560px); /* optional but matches carousel height */
+}
+
+/* Background image sits at the bottom */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.95) brightness(0.96);
+  z-index: 0;
+}
+
+/* Semi-transparent overlay ABOVE image, BELOW text */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(47,44,38,.65) 0%,
+    rgba(47,44,38,.35) 40%,
+    rgba(47,44,38,.1) 70%,
+    rgba(47,44,38,0) 100%
+  );
+  z-index: 1;
+}
+
+/* Content sits above everything */
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Light-on-dark text for legibility on the image */
+.hero .title { color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,.35); }
+.hero .lead { color: #f2ebe2; text-shadow: 0 1px 10px rgba(0,0,0,.25); }
+.hero .eyebrow {
+  color: #2e2a27;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.35);
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div>
+          <img src="images/logo.png" alt="Pup & Pure logo" class="brand-logo" />
+        </div>
+        Pup & Pure Bakery
+      </div>
+      <nav>
+        <a class="btn" href="index.html">back</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+
+  <section class="hero" aria-label="About Pup & Pure">
+  <!-- Background image layer -->
+  <div class="hero-bg" style="background-image:url('images/party.png')"></div>
+
+  <!-- Foreground content -->
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Locally made • Mira, Cape Breton</span>
+      <h1 class="title">All‑natural dog treats crafted with care.</h1>
+      <p class="lead">We started by baking simple, wholesome treats for our own pups to keep them happy and healthy. They loved them, so we set out to share that same goodness with every dog in Cape Breton and beyond.</p>
+      <div class="badge">🌿 100% Natural • 🥣 Small‑batch • 🏘️ Support Local</div>
+      <div class="cta-row">
+        <a class="btn" href="order.html">Order Now</a>
+        <a class="btn ghost" href="#contact">Contact Us</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+  <!-- Story -->
+  <section class="section" id="story">
+    <div class="container">
+      <h2 style="text-align:center;margin:0 0 10px">Our Story</h2>
+      <p class="lead" style="text-align:center;max-width:760px;margin:0 auto 20px">
+        Pup & Pure is proud to call Mira home. Our coastal surroundings inspire a commitment to clean ingredients and honest, small‑batch quality. What started in our kitchen to keep our pups healthy has grown into a local bakery so every dog can enjoy pure, simple treats.
+      </p>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <h3>Rooted in Cape Breton</h3>
+          <p>Locally owned and operated in Mira. We’re committed to community and quality in every batch.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>From our kitchen to yours</h3>
+          <p>We began baking for our own dogs - when the tails wouldn’t stop wagging, we knew we had to share.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Pure and simple</h3>
+          <p>Ingredients you can pronounce. Nothing extra - just what pups need and love.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact + Promise -->
+  <section class="section" id="contact">
+    <div class="container split">
+      <div class="panel">
+        <h2>Connect with Us</h2>
+        <p class="lead" style="margin:0 0 8px">We’d love to hear from you.</p>
+        <div style="color:var(--muted)">
+          <div><strong>Location:</strong> Mira, Cape Breton, Nova Scotia</div>
+          <div><strong>Email:</strong> <a href="mailto:woof@pupandpure.com">woof@pupandpure.com</a></div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn ghost" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=61579118342638&viewas=100000686899395">Like us on Facebook</a>
+          <a class="btn" href="order.html">Order Now</a>
+        </div>
+      </div>
+
+      <div class="panel" aria-label="Our Promise">
+        <h2>Our Promise</h2>
+        <p style="color:var(--muted);margin-top:6px">We keep it pure so you can keep it simple - treats you can feel good about giving, and pups can’t wait to get.</p>
+        <ul class="list">
+          <li>Thoughtfully sourced, all‑natural ingredients</li>
+          <li>No artificial flavors, colors, or preservatives</li>
+          <li>Consistent, small‑batch quality</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot-grid">
+      <div>© <span id="year"></span> Pup & Pure — All‑natural dog bakery</div>
+      <div><a href="#">About</a> • <a href="index.html#menu">Menu</a> • <a href="order.html">Order</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
