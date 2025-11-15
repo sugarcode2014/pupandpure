@@ -193,58 +193,161 @@
     </div>
   </footer>
 
-  <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Newsletter mock
-    function subscribe(){
-      const e=document.getElementById('email');
-      const msg=document.getElementById('msg');
-      if(!e.checkValidity()){e.reportValidity();return}
-      msg.textContent="Thanks! You're on the list.";
-      e.value='';
-    }
+  // Newsletter mock
+  function subscribe(){
+    const e=document.getElementById('email');
+    const msg=document.getElementById('msg');
+    if(!e.checkValidity()){e.reportValidity();return}
+    msg.textContent="Thanks! You're on the list.";
+    e.value='';
+  }
 
-    // Simple Carousel
-    (function(){
-      const slidesWrap = document.getElementById('slides');
-      const total = slidesWrap.children.length;
-      const prev = document.getElementById('prev');
-      const next = document.getElementById('next');
-      const dots = document.getElementById('dots');
-      let index = 0; let timer;
+  // Simple Carousel
+  (function(){
+    const slidesWrap = document.getElementById('slides');
+    const total = slidesWrap.children.length;
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const dots = document.getElementById('dots');
+    let index = 0; let timer;
 
-      function go(i){
-        index = (i + total) % total;
-        slidesWrap.style.transform = `translateX(-${index*100}%)`;
-        updateDots();
-        restart();
-      }
-      function updateDots(){
-        dots.innerHTML='';
-        for(let d=0; d<total; d++){
-          const b=document.createElement('button');
-          b.className='dot'+(d===index?' active':'');
-          b.setAttribute('aria-label',`Go to slide ${d+1}`);
-          b.onclick=()=>go(d);
-          dots.appendChild(b);
-        }
-      }
-      function restart(){
-        clearInterval(timer);
-        timer=setInterval(()=>go(index+1),6500);
-      }
-      prev.addEventListener('click',()=>go(index-1));
-      next.addEventListener('click',()=>go(index+1));
-      slidesWrap.parentElement.addEventListener('mouseenter',()=>clearInterval(timer));
-      slidesWrap.parentElement.addEventListener('mouseleave',restart);
-      slidesWrap.parentElement.tabIndex=0;
-      slidesWrap.parentElement.addEventListener('keydown',(e)=>{if(e.key==='ArrowLeft')go(index-1);if(e.key==='ArrowRight')go(index+1)});
-
+    function go(i){
+      index = (i + total) % total;
+      slidesWrap.style.transform = `translateX(-${index*100}%)`;
       updateDots();
       restart();
-    })();
-  </script>
+
+      // ADDED: expose current index so touch script can read it
+      window.__carouselIndex = index;
+      // ADDED: notify touch script (if it defined a setter) to keep in sync
+      window.__carouselSetIndex && window.__carouselSetIndex(index);
+    }
+
+    // ADDED: expose go() so touch script can call it
+    window.__carouselGo = go;
+
+    function updateDots(){
+      dots.innerHTML='';
+      for(let d=0; d<total; d++){
+        const b=document.createElement('button');
+        b.className='dot'+(d===index?' active':'');
+        b.setAttribute('aria-label',`Go to slide ${d+1}`);
+        b.onclick=()=>go(d);
+        dots.appendChild(b);
+      }
+    }
+    function restart(){
+      clearInterval(timer);
+      timer=setInterval(()=>go(index+1),6500);
+    }
+    prev.addEventListener('click',()=>go(index-1));
+    next.addEventListener('click',()=>go(index+1));
+    slidesWrap.parentElement.addEventListener('mouseenter',()=>clearInterval(timer));
+    slidesWrap.parentElement.addEventListener('mouseleave',restart);
+    slidesWrap.parentElement.tabIndex=0;
+    slidesWrap.parentElement.addEventListener('keydown',(e)=>{if(e.key==='ArrowLeft')go(index-1);if(e.key==='ArrowRight')go(index+1)});
+
+    updateDots();
+    restart();
+  })();
+</script>
+
+  <script>
+  // Touch swipe support for carousel
+  (function() {
+    const slidesWrap = document.getElementById('slides');
+    if (!slidesWrap) return;
+
+    const total = slidesWrap.children.length;
+    const dots = document.getElementById('dots');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+
+    // Reuse the existing go() if available; otherwise define a local one
+    let index = 0;
+    const hasGo = typeof window.__carouselGo === 'function';
+    function goLocal(i){
+      index = (i + total) % total;
+      slidesWrap.style.transform = `translateX(-${index*100}%)`;
+      // Update dots if present
+      if (dots) {
+        dots.querySelectorAll('.dot').forEach((d, di) => {
+          d.classList.toggle('active', di === index);
+        });
+      }
+    }
+
+    // Capture index changes from your existing carousel
+    // If your existing IIFE sets a timer and go() internally, expose hooks:
+    // Optionally, you can set window.__carouselSetIndex(index) in your main script.
+
+    // Touch handlers
+    let startX = 0, currentX = 0, isTouching = false, moved = false;
+    const threshold = 40; // px swipe to trigger
+
+    function onTouchStart(e) {
+      const t = e.touches ? e.touches[0] : e;
+      isTouching = true; moved = false;
+      startX = currentX = t.clientX;
+      slidesWrap.style.transition = 'none';
+    }
+
+    function onTouchMove(e) {
+      if (!isTouching) return;
+      const t = e.touches ? e.touches[0] : e;
+      currentX = t.clientX;
+      const dx = currentX - startX;
+      // Apply a small drag effect (optional)
+      slidesWrap.style.transform = `translateX(calc(-${(index||0)*100}% + ${dx}px))`;
+      moved = Math.abs(dx) > 4;
+      // Prevent horizontal browser gestures from interfering
+      if (Math.abs(dx) > 6) e.preventDefault();
+    }
+
+    function onTouchEnd() {
+      if (!isTouching) return;
+      isTouching = false;
+      slidesWrap.style.transition = 'transform .6s ease';
+      const dx = currentX - startX;
+
+      if (dx > threshold) {
+        // swipe right -> go to previous
+        if (typeof window.__carouselGo === 'function') window.__carouselGo((window.__carouselIndex||0) - 1);
+        else goLocal(index - 1);
+      } else if (dx < -threshold) {
+        // swipe left -> next
+        if (typeof window.__carouselGo === 'function') window.__carouselGo((window.__carouselIndex||0) + 1);
+        else goLocal(index + 1);
+      } else {
+        // snap back
+        if (typeof window.__carouselGo === 'function') window.__carouselGo(window.__carouselIndex||0);
+        else goLocal(index);
+      }
+    }
+
+    const root = document.getElementById('carousel');
+    const target = root || slidesWrap.parentElement;
+
+    // Use passive:false so we can call preventDefault in move
+    target.addEventListener('touchstart', onTouchStart, { passive: true });
+    target.addEventListener('touchmove', onTouchMove, { passive: false });
+    target.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    // Optional: mouse drag for desktop parity
+    let mouseDown = false;
+    target.addEventListener('mousedown', (e)=>{ mouseDown = true; onTouchStart(e); });
+    window.addEventListener('mousemove', (e)=>{ if(mouseDown) onTouchMove(e); });
+    window.addEventListener('mouseup', ()=>{ if(mouseDown){ mouseDown=false; onTouchEnd(); } });
+
+    // Expose a minimal API for the existing script to sync index (optional)
+    window.__carouselSetIndex = function(i){ index = i; };
+    // ADDED: expose go for touch script
+    window.__carouselGo = go;
+  })();
+</script>
 </body>
 </html>
