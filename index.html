@@ -73,6 +73,79 @@
     footer{border-top:1px solid var(--ring);background:#fff;padding:22px 0;color:var(--muted)}
     .foot-grid{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
 
+    .bubble-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8fafc;
+  color: #b91c1c;
+  border-radius: 2em;
+  padding: 0.75em 2em;
+  margin: 1.5em auto 2em auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  font-size: 1.1em;
+  font-weight: 600;
+  max-width: 420px;
+  border: 2px solid #fde68a;
+}
+
+.lights-banner-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.christmas-lights {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5em 0;
+  gap: 0.7em;
+}
+
+.christmas-lights li {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: red;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  animation: blink 1.2s infinite;
+}
+
+.christmas-lights li:nth-child(2) { background: #34d399; animation-delay: 0.2s; } /* green */
+.christmas-lights li:nth-child(3) { background: #f87171; animation-delay: 0.4s; } /* yellow */
+.christmas-lights li:nth-child(4) { background: #34d399; animation-delay: 0.6s; } /* blue */
+.christmas-lights li:nth-child(5) { background: #f87171; animation-delay: 0.8s; } /* pink */
+.christmas-lights li:nth-child(6) { background: #34d399; animation-delay: 1.0s; } /* red */
+.christmas-lights li:nth-child(7) { background: #f87171; animation-delay: 1.2s; } /* green */
+.christmas-lights li:nth-child(8) { background: #34d399; animation-delay: 1.4s; } /* yellow */
+.christmas-lights li:nth-child(9) { background: #f87171; animation-delay: 1.6s; } /* blue */
+.christmas-lights li:nth-child(10) { background: #34d399; animation-delay: 1.8s; } /* pink */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; filter: brightness(1.2);}
+  50% { opacity: 0.4; filter: brightness(0.7);}
+}
+
+/* Bubble banner from previous answer */
+.bubble-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8fafc;
+  color: #b91c1c;
+  border-radius: 2em;
+  padding: 0.75em 2em;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  font-size: 1.1em;
+  font-weight: 600;
+  max-width: 420px;
+  border: 2px solid #fde68a;
+}
+
     @media (max-width: 980px){
       .lead{max-width:100%}
       .features,.grid{grid-template-columns:1fr 1fr}
@@ -166,27 +239,191 @@
       </div>
     </div>
   </section>
-
+<div class="lights-banner-wrapper">
+  <ul class="christmas-lights">
+    <li></li><li></li><li></li><li></li><li></li>
+    <li></li><li></li><li></li><li></li><li></li>
+  </ul>
+  <div class="bubble-banner">
+    <span>🎄 Coming Dec 1 – Christmas Woofies and Pupcakes! 🎁</span>
+  </div>
+</div>
   <!-- Menu -->
   <section class="section" id="menu">
     <div class="container">
       <h2>Fresh From Our Oven</h2>
       <p class="lead center">Choose from our selection of handcrafted baked goods</p>
-       <div class="grid">
-        <article class="card product"><img src="images/baked.jpg" alt="Pumpkin Woofies" /><div class="meta"><strong>Pumpkin Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span></div><div>ingredients: whole wheat flour, no sugar added pumpkin, unsweetened apple sauce, all-natural peanut butter, baking powder [6 pack]</div></article>
-        <article class="card product"><img src="images/woof.jpg" alt="Wild-Blueberry Woofies" /><div class="meta"><strong>Wild-Blueberry Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span></div><div>Ingredients: whole wheat flour, wild canadian blueberries, banana, extra-virgin olive oil, baking powder [ 6 pack]</div></article>
-        <article class="card product"><img src="images/pupcake.jpg" alt="Pupcakes" /><div class="meta"><strong>Pupcakes</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 box</span></div><div>Ingredients: Whole Wheat flour, Bananas, Water,  Natural Peanut Butter, unsweetened apple sauce, Honey, Extra Virgin Olive Oil, Baking Powder. Frosting: Greek Yogurt,  Natural Peanut Butter [4 pack]</div></article>
-        <article class="card product"><img src="images/baked.jpg" alt="Carrot Apple Woofies" /><div class="meta"><strong>Carrot Apple Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span></div><div>Ingredients: whole wheat flour, carrots, unsweetened apple sauce,, extra-virgin olive oil, baking powder [6 pack]</div></article>
-        <article class="card product"><img src="images/donuts.jpg" alt="Donuts" /><div class="meta">
-          <strong>Doggy Donuts</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 box</span></div>
-          <div>Ingredients: whole wheat flour, oats,  unsweetened apple sauce, pumpkin, extra-virgin olive oil, baking powder. Frosting: Greek Yogurt,  Natural Peanut Butter [2 pack]</div></article>
-        
-      
-          <article class="card product"><img src="images/cake.jpg" alt="cake" /><div class="meta">
-          <strong>Pupday Cake</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$12.00</span></div>
-          <div>Ingredients: whole wheat flour, unsweetened apple sauce, bananas, extra-virgin olive oil, honey, baking powder, natural peanut butter. Frosting: Greek Yogurt,  Natural Peanut Butter (8 inch) </div></article>
-          <article class="card product"><img src="images/miniwoofies.jpg" alt="Mini Pumpkin Woofies" /><div class="meta"><strong>Mini Pumpkin Woofies</strong><span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span></div><div>ingredients: whole wheat flour, no sugar added pumpkin, unsweetened apple sauce, all-natural peanut butter, baking powder [24 pack]</div></article>
-      </div>
+<div class="grid">
+  <article class="card product">
+    <img src="images/baked.jpg" alt="Pumpkin Woofies" />
+    <div class="meta">
+      <strong>Pumpkin Woofies</strong>
+      <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span>
+    </div>
+    <div class="description">Gut-friendly pumpkin and yummy peanut butter.</div>
+    <div class="ingredients">
+      <strong>Ingredients:</strong>
+      <ul>
+        <li>Whole wheat flour</li>
+        <li>No sugar added pumpkin</li>
+        <li>Unsweetened apple sauce</li>
+        <li>All-natural peanut butter</li>
+        <li>Baking powder</li>
+      </ul>
+      <span> <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">6 pack</span></span>
+    </div>
+    <div class="storage">
+      <strong>Storage:</strong> Lasts 5-7 days unrefrigerated. Refrigerate for extended freshness or freeze for later use.
+    </div>
+  </article>
+
+  <article class="card product">
+    <img src="images/woof.jpg" alt="Wild-Blueberry Woofies" />
+    <div class="meta">
+      <strong>Wild-Blueberry Woofies</strong>
+      <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span>
+    </div>
+    <div class="description">Wild Canadian blueberries are full of antioxidants.</div>
+    <div class="ingredients">
+      <strong>Ingredients:</strong>
+      <ul>
+        <li>Whole wheat flour</li>
+        <li>Wild Canadian blueberries</li>
+        <li>Banana</li>
+        <li>Extra-virgin olive oil</li>
+        <li>Baking powder</li>
+      </ul>
+      <span> <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">6 pack</span></span>
+    </div>
+    <div class="storage">
+      <strong>Storage:</strong> Lasts 5-7 days unrefrigerated. Refrigerate for extended freshness or freeze for later use.
+    </div>
+  </article>
+
+  <article class="card product">
+    <img src="images/pupcake.jpg" alt="Pupcakes" />
+    <div class="meta">
+      <strong>Pupcakes</strong>
+      <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 box</span>
+    </div>
+    <div class="description">Perfect for special occasions, pupcakes are surprisingly healthy.</div>
+    <div class="ingredients">
+      <strong>Ingredients:</strong>
+      <ul>
+        <li>Whole wheat flour</li>
+        <li>Bananas</li>
+        <li>Water</li>
+        <li>Natural peanut butter</li>
+        <li>Unsweetened apple sauce</li>
+        <li>Honey</li>
+        <li>Extra-virgin olive oil</li>
+        <li>Baking powder</li>
+      </ul>
+      <strong>Frosting:</strong> Greek yogurt, natural peanut butter
+      <span> <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">4 pack</span></span>
+          <div class="storage">
+      <strong>Storage:</strong> Keep refrigerated up to 5 days or freeze for later use.
+    </div>
+    </div>
+  </article>
+
+  <article class="card product">
+    <img src="images/baked.jpg" alt="Carrot Apple Woofies" />
+    <div class="meta">
+      <strong>Carrot Apple Woofies</strong>
+      <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span>
+    </div>
+    <div class="description">Carrots are packed with vitamins and support gut and eye health.</div>
+    <div class="ingredients">
+      <strong>Ingredients:</strong>
+      <ul>
+        <li>Whole wheat flour</li>
+        <li>Carrots</li>
+        <li>Unsweetened apple sauce</li>
+        <li>Extra-virgin olive oil</li>
+        <li>Baking powder</li>
+      </ul>
+      <span> <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">6 pack</span></span>
+    </div>
+    <div class="storage">
+      <strong>Storage:</strong> Lasts 5-7 days unrefrigerated. Refrigerate for extended freshness or freeze for later use.
+    </div>
+  </article>
+
+  <article class="card product">
+    <img src="images/donuts.jpg" alt="Doggy Donuts" />
+    <div class="meta">
+      <strong>Doggy Donuts</strong>
+      <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 box</span>
+    </div>
+    <div class="description">Great for special occasions, these full-size donuts are surprisingly healthy.</div>
+    <div class="ingredients">
+      <strong>Ingredients:</strong>
+      <ul>
+        <li>Whole wheat flour</li>
+        <li>Oats</li>
+        <li>Unsweetened apple sauce</li>
+        <li>Pumpkin</li>
+        <li>Extra-virgin olive oil</li>
+        <li>Baking powder</li>
+      </ul>
+      <strong>Frosting:</strong> Greek yogurt, natural peanut butter
+      <span> <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">2 pack</span></span>
+    </div>
+    <div class="storage">
+      <strong>Storage:</strong> Keep refrigerated up to 5 days or freeze for later use.
+    </div>
+  </article>
+
+  <article class="card product">
+    <img src="images/cake.jpg" alt="Pupday Cake" />
+    <div class="meta">
+      <strong>Pupday Cake</strong>
+      <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$12.00</span>
+    </div>
+    <div class="description">Perfect for special occasions, this full-size cake is surprisingly healthy.</div>
+    <div class="ingredients">
+      <strong>Ingredients:</strong>
+      <ul>
+        <li>Whole wheat flour</li>
+        <li>Unsweetened apple sauce</li>
+        <li>Bananas</li>
+        <li>Extra-virgin olive oil</li>
+        <li>Honey</li>
+        <li>Baking powder</li>
+        <li>Natural peanut butter</li>
+      </ul>
+      <strong>Frosting:</strong> Greek yogurt, natural peanut butter
+      <span> <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">8 inch</span></span>
+    </div>
+    <div class="storage">
+      <strong>Storage:</strong> Keep refrigerated up to 5 days or freeze for later use.
+    </div>
+  </article>
+
+  <article class="card product">
+    <img src="images/miniwoofies.jpg" alt="Mini Pumpkin Woofies" />
+    <div class="meta">
+      <strong>Mini Pumpkin Woofies</strong>
+      <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">$5.00 bag</span>
+    </div>
+    <div class="description">Great for training and smaller dogs.</div>
+    <div class="ingredients">
+      <strong>Ingredients:</strong>
+      <ul>
+        <li>Whole wheat flour</li>
+        <li>No sugar added pumpkin</li>
+        <li>Unsweetened apple sauce</li>
+        <li>All-natural peanut butter</li>
+        <li>Baking powder</li>
+      </ul>
+      <span> <span class="eyebrow" style="border-color:var(--ring);color:var(--muted)">24 pack</span></span>
+    </div>
+    <div class="storage">
+      <strong>Storage:</strong> Lasts 5-7 days unrefrigerated. Refrigerate for extended freshness or freeze for later use.
+    </div>
+  </article>
+</div>
 
     
       
