@@ -407,7 +407,7 @@
             method="POST" novalidate onsubmit="
           const f = this;
           const get = (k) => parseInt((new FormData(f).get(k) || '0'), 10) || 0;
-          const total = get('qty_pumpkin_woofies') + get('qty_blueberry_woofies') + get('qty_apple_carrot_woofies') + get('qty_pupcakes') + get('qty_cake') + get('qty_mini_pumpkin');
+          const total = get('qty_holiday_woofies') + get('qty_pumpkin_woofies') + get('qty_blueberry_woofies') + get('qty_apple_carrot_woofies') + get('qty_pupcakes') + get('qty_cake') + get('qty_mini_pumpkin');
           if (total === 0) { alert('Please select at least one item (set a quantity > 0).'); return false; }
           return true;">
             <!-- Honeypot -->
