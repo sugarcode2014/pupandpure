@@ -407,17 +407,10 @@
             method="POST" novalidate onsubmit="
           const f = this;
           const get = (k) => parseInt((new FormData(f).get(k) || '0'), 10) || 0;
-          const total = get('qty_holiday_woofies') + get('qty_pumpkin_woofies') + get('qty_blueberry_woofies') + get('qty_apple_carrot_woofies') + get('qty_pupcakes') + get('qty_cake') + get('qty_mini_pumpkin');
-          if (total === 0) { alert('Please select at least one item (set a quantity > 0).'); return false; }
+          const total = get('qty_holiday_woofies')+ get('qty_holiday_pupcakes') + get('qty_pumpkin_woofies') + get('qty_blueberry_woofies') + get('qty_apple_carrot_woofies') + get('qty_pupcakes') + get('qty_cake') + get('qty_mini_pumpkin');
+          if (total === 0) { alert('Please select at least one item'); return false; }
           return true;">
-            <!-- Honeypot -->
-            <input type="text" name="website" autocomplete="off" tabindex="-1"
-              style="position:absolute; left:-9999px; opacity:0; height:1px; width:1px;">
-            <div class="h-captcha" data-sitekey="db6e200c-7b02-4366-8a6c-5bd09d369a38"></div>
-            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-            <script>
-              document.getElementById('year').textContent = new Date().getFullYear();
-            </script>
+
 
             <!-- Contact -->
             <div class="row fld">
@@ -533,7 +526,14 @@
 
             <div class="divider"></div>
 
-
+            <!-- Honeypot -->
+            <input type="text" name="website" autocomplete="off" tabindex="-1"
+              style="position:absolute; left:-9999px; opacity:0; height:1px; width:1px;">
+            <div class="h-captcha" data-sitekey="db6e200c-7b02-4366-8a6c-5bd09d369a38"></div>
+            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+            <script>
+              document.getElementById('year').textContent = new Date().getFullYear();
+            </script>
 
             <div class="actions">
               <button class="btn" type="submit">Submit Order</button>
